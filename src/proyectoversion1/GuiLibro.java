@@ -10,12 +10,18 @@ package proyectoversion1;
  * @author salva
  */
 public class GuiLibro extends javax.swing.JFrame {
-
+    static GuiPrincipal guiPrincipal;
     /**
      * Creates new form GuiLibro
      */
     public GuiLibro() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    public GuiLibro(GuiPrincipal guiPrincipal) {
+        this.guiPrincipal=guiPrincipal;
+        initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -43,6 +49,7 @@ public class GuiLibro extends javax.swing.JFrame {
         txaResultado = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        btnAtrasLib = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LIBROS");
@@ -61,6 +68,11 @@ public class GuiLibro extends javax.swing.JFrame {
 
         btnAgregar.setText("Agregar");
         btnAgregar.setToolTipText("");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         txaResultado.setColumns(20);
         txaResultado.setRows(5);
@@ -82,15 +94,24 @@ public class GuiLibro extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         jLabel4.setText("LIBROS");
 
+        btnAtrasLib.setText("Atras");
+        btnAtrasLib.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasLibActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -108,25 +129,32 @@ public class GuiLibro extends javax.swing.JFrame {
                             .addComponent(txtISBN)
                             .addComponent(txtAutor)
                             .addComponent(txtNumPaginas, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
                                 .addComponent(btnAgregar)
-                                .addGap(39, 39, 39)
-                                .addComponent(btnBuscar))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(38, 38, 38))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscar)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45))))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(247, 247, 247)
                 .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAtrasLib)
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
@@ -153,12 +181,32 @@ public class GuiLibro extends javax.swing.JFrame {
                     .addComponent(btnBuscar)
                     .addComponent(btnAgregar))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(btnAtrasLib)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+        Libro libro1 = new Libro();
+        libro1.setTitulo(txtTitulo.getText());
+        libro1.setISBN(txtISBN.getText());
+        libro1.setAutor(txtAutor.getText());
+        libro1.setEdicion(txtEdicion.getText());
+        libro1.setNumPaginas(Integer.parseInt(txtNumPaginas.getText()));
+        guiPrincipal.libros.ingresarLibro(libro1);
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnAtrasLibActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasLibActionPerformed
+        // TODO add your handling code here:
+      // GuiPrincipal guiPrincipal = new GuiPrincipal();
+        guiPrincipal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnAtrasLibActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,7 +238,7 @@ public class GuiLibro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiLibro().setVisible(true);
+                new GuiLibro(guiPrincipal).setVisible(true);
             }
         });
     }
@@ -199,6 +247,7 @@ public class GuiLibro extends javax.swing.JFrame {
     private javax.swing.JLabel Edicion;
     private javax.swing.JLabel Titulo;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAtrasLib;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

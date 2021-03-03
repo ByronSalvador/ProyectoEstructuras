@@ -10,14 +10,19 @@ package proyectoversion1;
  * @author salva
  */
 public class GuiReservacion extends javax.swing.JFrame {
-
+    static GuiPrincipal guiPrincipal;
     /**
      * Creates new form GuiReservacion
      */
     public GuiReservacion() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
-
+    public GuiReservacion(GuiPrincipal guiPrincipal) {
+        this.guiPrincipal=guiPrincipal;
+        initComponents();
+        this.setLocationRelativeTo(null);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,6 +32,7 @@ public class GuiReservacion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnAtras = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -34,7 +40,7 @@ public class GuiReservacion extends javax.swing.JFrame {
         txtCodigoReservacion = new javax.swing.JTextField();
         txtISBNReservacion = new javax.swing.JTextField();
         txtCIReservacion = new javax.swing.JTextField();
-        txtFechaReservacion = new javax.swing.JTextField();
+        txtFechaReservacionDia = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
@@ -42,6 +48,16 @@ public class GuiReservacion extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        txtFechaReservacionMes = new javax.swing.JTextField();
+        txtFechareservacionAnio = new javax.swing.JTextField();
+        btnAtrasRes = new javax.swing.JButton();
+
+        btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,7 +67,7 @@ public class GuiReservacion extends javax.swing.JFrame {
 
         jLabel3.setText("Cedula del Cliente");
 
-        jLabel4.setText("Fecha");
+        jLabel4.setText("Fecha (dd/mm/aa)");
 
         txtISBNReservacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +76,11 @@ public class GuiReservacion extends javax.swing.JFrame {
         });
 
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
 
@@ -85,6 +106,13 @@ public class GuiReservacion extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         jLabel5.setText("RESERVACIONES");
 
+        btnAtrasRes.setText("Atras");
+        btnAtrasRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasResActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,9 +120,6 @@ public class GuiReservacion extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txaMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 35, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -105,21 +130,31 @@ public class GuiReservacion extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtISBNReservacion, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                             .addComponent(txtCIReservacion)
-                            .addComponent(txtFechaReservacion)
-                            .addComponent(txtCodigoReservacion))
+                            .addComponent(txtCodigoReservacion)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(txtFechaReservacionDia, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtFechaReservacionMes, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtFechareservacionAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(218, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnAgregar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnBuscar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnEliminar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
+                                .addComponent(btnEliminar)
+                                .addGap(71, 71, 71))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txaMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAtrasRes)
+                        .addGap(44, 44, 44))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
@@ -148,15 +183,22 @@ public class GuiReservacion extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtFechaReservacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnAgregar)
-                        .addComponent(btnEliminar)
-                        .addComponent(btnBuscar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txaMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtFechaReservacionDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAgregar)
+                                .addComponent(btnEliminar)
+                                .addComponent(btnBuscar)
+                                .addComponent(txtFechaReservacionMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtFechareservacionAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txaMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnAtrasRes)
+                        .addGap(22, 22, 22))))
         );
 
         pack();
@@ -165,6 +207,31 @@ public class GuiReservacion extends javax.swing.JFrame {
     private void txtISBNReservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtISBNReservacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtISBNReservacionActionPerformed
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        // TODO add your handling code here:
+               //GuiPrincipal guiPrincipal = new GuiPrincipal();
+    }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnAtrasResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasResActionPerformed
+        // TODO add your handling code here:
+        guiPrincipal.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnAtrasResActionPerformed
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+        Reservacion reservacion1 = new Reservacion();
+        reservacion1.setLibro(new Libro());
+        reservacion1.setCliente(new Usuario());
+        reservacion1.setCodigo(Integer.parseInt(txtCodigoReservacion.getText()));
+        reservacion1.libro.setISBN(txtISBNReservacion.getText());
+        //reservacion1.setDireccion(txtDireccion.getText());
+        reservacion1.cliente.setCedula(txtCIReservacion.getText());
+        reservacion1.fecha=new Fecha (Integer.parseInt(txtFechaReservacionDia.getText()), Integer.parseInt(txtFechaReservacionMes.getText()),Integer.parseInt(txtFechareservacionAnio.getText()) );
+        NodoReservacion reservacion = new NodoReservacion(reservacion1);
+        guiPrincipal.reservaciones.ingresarNodo(reservacion);
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,13 +263,15 @@ public class GuiReservacion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiReservacion().setVisible(true);
+                new GuiReservacion(guiPrincipal).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAtras;
+    private javax.swing.JButton btnAtrasRes;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel jLabel1;
@@ -215,7 +284,9 @@ public class GuiReservacion extends javax.swing.JFrame {
     private javax.swing.JScrollPane txaMostrar;
     private javax.swing.JTextField txtCIReservacion;
     private javax.swing.JTextField txtCodigoReservacion;
-    private javax.swing.JTextField txtFechaReservacion;
+    private javax.swing.JTextField txtFechaReservacionDia;
+    private javax.swing.JTextField txtFechaReservacionMes;
+    private javax.swing.JTextField txtFechareservacionAnio;
     private javax.swing.JTextField txtISBNReservacion;
     // End of variables declaration//GEN-END:variables
 }
