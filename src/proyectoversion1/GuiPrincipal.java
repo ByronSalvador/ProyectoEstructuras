@@ -11,8 +11,8 @@ package proyectoversion1;
  */
 public class GuiPrincipal extends javax.swing.JFrame {
     final int MAX_LIBROS=1;
-    ArregloLibro libros = new ArregloLibro(MAX_LIBROS);
-    ListaUsuario usuarios = new ListaUsuario();
+    ArregloLibros libros = new ArregloLibros(MAX_LIBROS);
+    ListaClientes usuarios = new ListaClientes();
     ColaReservaciones reservaciones = new ColaReservaciones();
     /**
      * Creates new form GuiPrincipal
@@ -161,14 +161,14 @@ public class GuiPrincipal extends javax.swing.JFrame {
 
     private void btnUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuarioActionPerformed
         // TODO add your handling code here:
-        GuiUsuario guiUsuario = new GuiUsuario(this);    
+        GuiCliente guiUsuario = new GuiCliente(this);    
         guiUsuario.setVisible(true);
         this.setVisible(false);
         /*
         if(GuiPrincipal.getFrames()[0].isVisible()){
             GuiPrincipal.getFrames()[0].setVisible(false);
-            GuiPrincipal.getFrames()[0].add(GuiUsuario.getFrames()[0]);
-            GuiUsuario.getFrames()[0].setVisible(true);
+            GuiPrincipal.getFrames()[0].add(GuiCliente.getFrames()[0]);
+            GuiCliente.getFrames()[0].setVisible(true);
         }
         */
     }//GEN-LAST:event_btnUsuarioActionPerformed
@@ -218,6 +218,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GuiPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

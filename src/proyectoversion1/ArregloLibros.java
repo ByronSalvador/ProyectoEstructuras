@@ -9,14 +9,14 @@ package proyectoversion1;
  *
  * @author salva
  */
-public class ArregloLibro {
+public class ArregloLibros {
     Libro libros [];
     int numLibros;
     
-    public ArregloLibro(){
+    public ArregloLibros(){
         //numLibros = 0;
     }
-    public ArregloLibro(int n){
+    public ArregloLibros(int n){
         numLibros = n;
         libros = new Libro[numLibros];
         //Inicializar el arreglo de libros en null
@@ -29,9 +29,23 @@ public class ArregloLibro {
         for(int i=0; i<numLibros; i++){
             if(libros[i] == null){
                 libros[i]=libro;
+                break;
             }
         }
         
+    }
+    
+    public Libro buscarLibro(String titulo){
+        Libro q;
+        for (int i=0; i<numLibros; i++){
+            q = libros[i];
+            if (q != null){
+                if ((!titulo.equals(null)) && q.titulo.equals(titulo))
+                    return q;
+            }
+            
+        }
+        return null;
     }
 
     @Override

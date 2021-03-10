@@ -11,8 +11,8 @@ package proyectoversion1;
  */
 public class Reservacion {
     int codigo;
-    Libro libro;
-    Usuario cliente;
+    String isbnLibro;
+    String cedulaCliente;
     Fecha fecha;
 
     public int getCodigo() {
@@ -23,20 +23,20 @@ public class Reservacion {
         this.codigo = codigo;
     }
 
-    public Libro getLibro() {
-        return libro;
+    public String getIsbnLibro() {
+        return isbnLibro;
     }
 
-    public void setLibro(Libro libro) {
-        this.libro = libro;
+    public void setIsbnLibro(String isbnLibro) {
+        this.isbnLibro = isbnLibro;
     }
 
-    public Usuario getCliente() {
-        return cliente;
+    public String getCedulaCliente() {
+        return cedulaCliente;
     }
 
-    public void setCliente(Usuario cliente) {
-        this.cliente = cliente;
+    public void setCedulaCliente(String cedulaCliente) {
+        this.cedulaCliente = cedulaCliente;
     }
 
     public Fecha getFecha() {
@@ -49,7 +49,7 @@ public class Reservacion {
 
     @Override
     public String toString() {
-        return "\nCodigo: " + codigo + "| Libro (ISBN): " + libro.ISBN + "| Cliente (CI): " + cliente.cedula + "| Fecha: " + fecha;
+        return "\nCodigo: " + codigo + "| Libro (ISBN): " + isbnLibro + "| Cliente (CI): " + cedulaCliente + "| Fecha: " + fecha;
     }
  
     

@@ -32,6 +32,62 @@ public class ColaReservaciones {
         }
     }
     
+    public Reservacion eliminarNodo(){
+        if (fin == null){
+            return null;
+        }
+        else {
+            NodoReservacion q = frente;
+            if (frente == fin){
+                frente = null;
+                fin = null;
+            }
+            else {
+                frente = frente.enlace;
+            }
+            return q.reservacion;
+        }
+    }
+    
+    public Reservacion eliminarNodo(int codigo){
+        NodoReservacion q = frente;
+        NodoReservacion t = frente;
+        int b = 1;
+        
+        while((q.reservacion.codigo == codigo) && (b == 1)){
+            if (q.enlace != null){
+                t = q;
+                q = q.enlace;
+            }
+            else {
+                b = 0;
+            }
+        }
+        
+        if(b == 0){
+            return null;
+        }
+        else {
+            if (frente == fin)
+            return null; //kajsdkl
+        }
+        return null; //arasras
+    }
+    
+    public Reservacion buscarNodo(int codigo){
+        NodoReservacion q = frente;
+        while((q != null) && (q.reservacion.codigo != codigo)){
+            q = q.enlace;
+        }
+        
+        if(q == null){
+            return null;
+        }
+        else {
+            return q.reservacion;
+        }
+    }
+    
 @Override
     public String toString() {
         String infoReservacion="";

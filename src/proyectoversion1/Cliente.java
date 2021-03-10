@@ -9,12 +9,12 @@ package proyectoversion1;
  *
  * @author salva
  */
-public class Usuario {
+public class Cliente {
     String cedula;
     String nombres, apellidos;
     String telefono;
     String direccion;
-    boolean esEmpleado; //Si no es empleado sera falso
+    //boolean esEmpleado; //Si no es empleado sera falso
 
     public String getCedula() {
         return cedula;
@@ -56,24 +56,9 @@ public class Usuario {
         this.direccion = direccion;
     }
 
-    public boolean isesEmpleado() {
-        return esEmpleado;
-    }
-
-    public void setEsEmpleado(boolean esEmpleado) {
-        this.esEmpleado = esEmpleado;
-    }
-
     @Override
     public String toString() {
-        String aux;
-        if(esEmpleado == true){
-            aux="Empleado";
-        }else{
-            aux="Cliente";
-        }
-        return "\nCedula: " + cedula + "| Nombres: " + nombres + "| Apellidos: " + apellidos + "| Telefono: " + telefono + "| Direccion: " + direccion + "| Usuario: " + aux;
+        return "\nCedula: " + cedula + "| Nombres: " + nombres + "| Apellidos: " + apellidos + "| Telefono: " + telefono + "| Direccion: " + direccion;
     }
-    
-    
+ 
 }

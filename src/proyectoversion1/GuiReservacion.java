@@ -221,9 +221,9 @@ public class GuiReservacion extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-        Reservacion reservacion1 = new Reservacion();
+        /*Reservacion reservacion1 = new Reservacion();
         reservacion1.setLibro(new Libro());
-        reservacion1.setCliente(new Usuario());
+        reservacion1.setCliente(new Cliente());
         reservacion1.setCodigo(Integer.parseInt(txtCodigoReservacion.getText()));
         reservacion1.libro.setISBN(txtISBNReservacion.getText());
         //reservacion1.setDireccion(txtDireccion.getText());
@@ -231,6 +231,7 @@ public class GuiReservacion extends javax.swing.JFrame {
         reservacion1.fecha=new Fecha (Integer.parseInt(txtFechaReservacionDia.getText()), Integer.parseInt(txtFechaReservacionMes.getText()),Integer.parseInt(txtFechareservacionAnio.getText()) );
         NodoReservacion reservacion = new NodoReservacion(reservacion1);
         guiPrincipal.reservaciones.ingresarNodo(reservacion);
+        */
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
@@ -258,6 +259,7 @@ public class GuiReservacion extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GuiReservacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
