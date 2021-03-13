@@ -72,12 +72,6 @@ public class FrameRegistrarReservacion extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Fecha (dd/mm/aa)");
 
-        txtISBNReservacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtISBNReservacionActionPerformed(evt);
-            }
-        });
-
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,25 +161,31 @@ public class FrameRegistrarReservacion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtISBNReservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtISBNReservacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtISBNReservacionActionPerformed
-
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-        Reservacion reservacion1 = new Reservacion();
-        reservacion1.setCodigo(Integer.parseInt(txtCodigoReservacion.getText()));
-        reservacion1.setIsbnLibro(txtISBNReservacion.getText());
-        reservacion1.setCedulaCliente(txtCIReservacion.getText());
-        reservacion1.setFecha(new Fecha(Integer.parseInt(txtFechaReservacionDia.getText()), 
-                                        Integer.parseInt(txtFechaReservacionMes.getText()), 
-                                        Integer.parseInt(txtFechareservacionAnio.getText())));
-        
-        NodoReservacion nuevoNodoReservacion = new NodoReservacion(reservacion1);
-        principal.reservaciones.ingresarNodo(nuevoNodoReservacion);
-        txaMostrarRegistroReservacion.setText("¡Reservación registrada!" + reservacion1.toString());
-        
-        limpiarCasillas();
+        if (!txtCodigoReservacion.getText().isEmpty()
+                && !txtISBNReservacion.getText().isEmpty()
+                && !txtCIReservacion.getText().isEmpty()
+                && !txtFechaReservacionDia.getText().isEmpty()
+                && !txtFechaReservacionMes.getText().isEmpty()
+                && !txtFechareservacionAnio.getText().isEmpty()){
+            Reservacion reservacion1 = new Reservacion();
+            reservacion1.setCodigo(Integer.parseInt(txtCodigoReservacion.getText()));
+            reservacion1.setIsbnLibro(txtISBNReservacion.getText());
+            reservacion1.setCedulaCliente(txtCIReservacion.getText());
+            reservacion1.setFecha(new Fecha(Integer.parseInt(txtFechaReservacionDia.getText()), 
+                                            Integer.parseInt(txtFechaReservacionMes.getText()), 
+                                            Integer.parseInt(txtFechareservacionAnio.getText())));
+
+            NodoReservacion nuevoNodoReservacion = new NodoReservacion(reservacion1);
+            principal.reservaciones.ingresarNodo(nuevoNodoReservacion);
+            txaMostrarRegistroReservacion.setText("¡Reservación registrada!" + reservacion1.toString());
+
+            limpiarCasillas();
+        }
+        else {
+            txaMostrarRegistroReservacion.setText("No se ha ingresado información suficiente"
+                    + " para realizar el registro.\nPor favor, llene todos los campos");
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     public void limpiarCasillas(){
@@ -197,6 +197,10 @@ public class FrameRegistrarReservacion extends javax.swing.JInternalFrame {
         txtISBNReservacion.setText(null);
     }
 
+    public void limpiarAreaDeTexto(){
+        txaMostrarRegistroReservacion.setText(null);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JLabel jLabel1;

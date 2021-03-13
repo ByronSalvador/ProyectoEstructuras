@@ -169,9 +169,6 @@
     <Component class="javax.swing.JTextField" name="txtFechaReservacionMes">
     </Component>
     <Component class="javax.swing.JTextField" name="txtISBNReservacion">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtISBNReservacionActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtFechareservacionAnio">
     </Component>

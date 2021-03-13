@@ -96,19 +96,28 @@ public class FrameBuscarCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
-        // TODO add your handling code here:
-        String cedulaCliente = txtCedula.getText();
-        Cliente cliente1 = principal.clientes.buscarNodo(cedulaCliente);
-        if (cliente1 == null){
-            txaMostrarCliente.setText("No se ha encontrado al cliente");
+    if (!txtCedula.getText().isEmpty()){
+            String cedulaCliente = txtCedula.getText();
+            Cliente cliente1 = principal.clientes.buscarNodo(cedulaCliente);
+            if (cliente1 == null){
+                txaMostrarCliente.setText("No se ha encontrado al cliente");
+            }
+            else {
+                txaMostrarCliente.setText(cliente1.toString());
+            }
+            
+            txtCedula.setText(null); 
         }
         else {
-            txaMostrarCliente.setText(cliente1.toString());
+            txaMostrarCliente.setText("No se ha ingresado información para"
+                    + " realizar la búsqueda.\nPor favor, ingrese un valor en "
+                    + " el campo \"Cédula\"");
         }
-        
-        txtCedula.setText(null);
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
+    public void limpiarAreaDeTexto(){
+        txaMostrarCliente.setText(null);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarCliente;

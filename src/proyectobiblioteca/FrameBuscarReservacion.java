@@ -53,7 +53,7 @@ public class FrameBuscarReservacion extends javax.swing.JInternalFrame {
         txaMostrarReservacionBuscada.setRows(5);
         txaMostrar.setViewportView(txaMostrarReservacionBuscada);
 
-        jLabel1.setText("Codigo");
+        jLabel1.setText("Código");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,18 +99,27 @@ public class FrameBuscarReservacion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarReservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarReservacionActionPerformed
-        // TODO add your handling code here:
-        int codigoRes = Integer.parseInt(txtCodigoReservacionBuscar.getText());
-        Reservacion reservacion1 = principal.reservaciones.buscarNodo(codigoRes);
-        if (reservacion1 == null){
-            txaMostrarReservacionBuscada.setText("No se ha encontrado la reservación");
-        } else {
-            txaMostrarReservacionBuscada.setText(reservacion1.toString());
+        if (!txtCodigoReservacionBuscar.getText().isEmpty()){
+            int codigoRes = Integer.parseInt(txtCodigoReservacionBuscar.getText());
+            Reservacion reservacion1 = principal.reservaciones.buscarNodo(codigoRes);
+            if (reservacion1 == null){
+                txaMostrarReservacionBuscada.setText("No se ha encontrado la reservación");
+            } else {
+                txaMostrarReservacionBuscada.setText(reservacion1.toString());
+            }
+
+            txtCodigoReservacionBuscar.setText(null);
         }
-        
-        txtCodigoReservacionBuscar.setText(null);
+        else {
+            txaMostrarReservacionBuscada.setText("No se ha ingresado información para"
+                    + " realizar la búsqueda.\nPor favor, ingrese un valor en "
+                    + " el campo \"Código\"");
+        }
     }//GEN-LAST:event_btnBuscarReservacionActionPerformed
 
+    public void limpiarAreaDeTexto(){
+        txaMostrarReservacionBuscada.setText(null);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarReservacion;

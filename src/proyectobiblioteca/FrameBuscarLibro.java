@@ -39,7 +39,7 @@ public class FrameBuscarLibro extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         txtTituloLibro = new javax.swing.JTextField();
 
-        Titulo.setText("Titulo");
+        Titulo.setText("Título");
 
         btnBuscarLibro.setText("Buscar");
         btnBuscarLibro.setToolTipText("");
@@ -97,19 +97,29 @@ public class FrameBuscarLibro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLibroActionPerformed
-        // TODO add your handling code here:
-        String titulo = txtTituloLibro.getText();
-        Libro libro1 = principal.libros.buscarLibro(titulo);
-        if (libro1 == null){
-            txaMostrarLibro.setText("No se ha encontrado el libro");
+        if (!txtTituloLibro.getText().isEmpty()){
+            String titulo = txtTituloLibro.getText();
+            Libro libro1 = principal.libros.buscarLibro(titulo);
+            if (libro1 == null){
+                txaMostrarLibro.setText("No se ha encontrado el libro");
+            }
+            else {
+                txaMostrarLibro.setText(libro1.toString());
+            }
+
+            txtTituloLibro.setText(null);
         }
         else {
-            txaMostrarLibro.setText(libro1.toString());
+            txaMostrarLibro.setText("No se ha ingresado información para"
+                    + " realizar la búsqueda.\nPor favor, ingrese un valor en "
+                    + " el campo \"Título\"");
         }
         
-        txtTituloLibro.setText(null);
     }//GEN-LAST:event_btnBuscarLibroActionPerformed
 
+    public void limpiarAreaDeTexto(){
+        txaMostrarLibro.setText(null);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Titulo;

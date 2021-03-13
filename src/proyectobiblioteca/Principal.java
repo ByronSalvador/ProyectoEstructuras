@@ -5,6 +5,7 @@
  */
 package proyectobiblioteca;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
@@ -91,7 +92,7 @@ public class Principal extends javax.swing.JFrame {
         btnRegistrarCliente = new javax.swing.JMenuItem();
         Productos = new javax.swing.JMenu();
         btnAgregarReservacion = new javax.swing.JMenuItem();
-        btnEliminar = new javax.swing.JMenuItem();
+        btnBuscarReservacion = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnRegistrarLibro = new javax.swing.JMenuItem();
         btnConsultarLibro = new javax.swing.JMenuItem();
@@ -151,13 +152,13 @@ public class Principal extends javax.swing.JFrame {
         });
         Productos.add(btnAgregarReservacion);
 
-        btnEliminar.setText("Buscar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarReservacion.setText("Buscar");
+        btnBuscarReservacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
+                btnBuscarReservacionActionPerformed(evt);
             }
         });
-        Productos.add(btnEliminar);
+        Productos.add(btnBuscarReservacion);
 
         jMenuBar1.add(Productos);
 
@@ -199,8 +200,9 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarClienteActionPerformed
-
         CentrarVentana(registrarCliente);
+        registrarCliente.limpiarCasillas();
+        registrarCliente.limpiarAreaDeTexto();
     }//GEN-LAST:event_btnRegistrarClienteActionPerformed
 
     private void ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductosActionPerformed
@@ -208,14 +210,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_ProductosActionPerformed
 
     private void btnAgregarReservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarReservacionActionPerformed
-
         CentrarVentana(registrarReservacion);
-
+        registrarReservacion.limpiarCasillas();
+        registrarReservacion.limpiarAreaDeTexto();
     }//GEN-LAST:event_btnAgregarReservacionActionPerformed
 
     private void btnRegistrarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarLibroActionPerformed
-
         CentrarVentana(registrarLibro);
+        registrarLibro.limpiarCasillas();
+        registrarLibro.limpiarAreaDeTexto();
     }//GEN-LAST:event_btnRegistrarLibroActionPerformed
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
@@ -224,14 +227,17 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnConsultarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarClientesActionPerformed
          CentrarVentana(buscarCliente);
+         buscarCliente.limpiarAreaDeTexto();
     }//GEN-LAST:event_btnConsultarClientesActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    private void btnBuscarReservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarReservacionActionPerformed
         CentrarVentana(eliminarReservacion);
-    }//GEN-LAST:event_btnEliminarActionPerformed
+        eliminarReservacion.limpiarAreaDeTexto();
+    }//GEN-LAST:event_btnBuscarReservacionActionPerformed
 
     private void btnConsultarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarLibroActionPerformed
         CentrarVentana(buscarLibro);
+        buscarLibro.limpiarAreaDeTexto();
     }//GEN-LAST:event_btnConsultarLibroActionPerformed
 
     /**
@@ -309,10 +315,10 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Productos;
     private javax.swing.JMenuItem btnAgregarReservacion;
+    private javax.swing.JMenuItem btnBuscarReservacion;
     private javax.swing.JMenu btnClientes;
     private javax.swing.JMenuItem btnConsultarClientes;
     private javax.swing.JMenuItem btnConsultarLibro;
-    private javax.swing.JMenuItem btnEliminar;
     private javax.swing.JMenuItem btnRegistrarCliente;
     private javax.swing.JMenuItem btnRegistrarLibro;
     private javax.swing.JMenu jMenu2;

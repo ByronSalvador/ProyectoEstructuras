@@ -161,18 +161,27 @@ public class FrameRegistrarLibro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-        Libro libro1 = new Libro();
-        libro1.setTitulo(txtTituloLibro.getText());
-        libro1.setISBN(txtISBNLibro.getText());
-        libro1.setAutor(txtAutorLibro.getText());
-        libro1.setEdicion(txtEdicionLibro.getText());
-        libro1.setNumPaginas(Integer.parseInt(txtNumPaginasLibro.getText()));
-        
-        principal.libros.ingresarLibro(libro1);
-        txaMostrarRegistroLibro.setText("¡Se ha ingresado el libro!" + libro1.toString());
-        
-        limpiarCasillas();
+        if (!txtTituloLibro.getText().isEmpty()
+                && !txtISBNLibro.getText().isEmpty()
+                && !txtAutorLibro.getText().isEmpty()
+                && !txtEdicionLibro.getText().isEmpty()
+                && !txtNumPaginasLibro.getText().isEmpty()){
+            Libro libro1 = new Libro();
+            libro1.setTitulo(txtTituloLibro.getText());
+            libro1.setISBN(txtISBNLibro.getText());
+            libro1.setAutor(txtAutorLibro.getText());
+            libro1.setEdicion(txtEdicionLibro.getText());
+            libro1.setNumPaginas(Integer.parseInt(txtNumPaginasLibro.getText()));
+
+            principal.libros.ingresarLibro(libro1);
+            txaMostrarRegistroLibro.setText("¡Se ha ingresado el libro!" + libro1.toString());
+            
+            limpiarCasillas();
+        }
+        else {
+            txaMostrarRegistroLibro.setText("No se ha ingresado información suficiente"
+                    + " para realizar el registro.\nPor favor, llene todos los campos");
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     public void limpiarCasillas(){
@@ -181,6 +190,10 @@ public class FrameRegistrarLibro extends javax.swing.JInternalFrame {
         txtISBNLibro.setText(null);
         txtNumPaginasLibro.setText(null);
         txtTituloLibro.setText(null);
+    }
+    
+    public void limpiarAreaDeTexto(){
+        txaMostrarRegistroLibro.setText(null);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

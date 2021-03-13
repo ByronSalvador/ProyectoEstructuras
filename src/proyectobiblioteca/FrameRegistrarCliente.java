@@ -176,19 +176,28 @@ public class FrameRegistrarCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarClienteActionPerformed
-        // TODO add your handling code here:
-        Cliente cliente1 = new Cliente();
-        cliente1.setNombres(txtNombreCliente.getText());
-        cliente1.setApellidos(txtApellidoCliente.getText());
-        cliente1.setDireccion(txtDireccionCliente.getText());
-        cliente1.setCedula(txtCICliente.getText());
-        cliente1.setTelefono(txtTelefonoCliente.getText());
-        
-        NodoCliente nuevoNodoCliente = new NodoCliente(cliente1);
-        principal.clientes.ingresarNodo(nuevoNodoCliente);
-        txaMostrarClienteRegistro.setText("¡Cliente ingresado!" + cliente1.toString());
-        
-        limpiarCasillas();
+        if (!txtNombreCliente.getText().isEmpty()
+                && !txtApellidoCliente.getText().isEmpty()
+                && !txtCICliente.getText().isEmpty()
+                && !txtDireccionCliente.getText().isEmpty()
+                && !txtTelefonoCliente.getText().isEmpty()){
+            Cliente cliente1 = new Cliente();
+            cliente1.setNombres(txtNombreCliente.getText());
+            cliente1.setApellidos(txtApellidoCliente.getText());
+            cliente1.setDireccion(txtDireccionCliente.getText());
+            cliente1.setCedula(txtCICliente.getText());
+            cliente1.setTelefono(txtTelefonoCliente.getText());
+
+            NodoCliente nuevoNodoCliente = new NodoCliente(cliente1);
+            principal.clientes.ingresarNodo(nuevoNodoCliente);
+            txaMostrarClienteRegistro.setText("¡Cliente ingresado!" + cliente1.toString());
+            
+            limpiarCasillas();
+        }
+        else {
+            txaMostrarClienteRegistro.setText("No se ha ingresado información suficiente"
+                    + " para realizar el registro.\nPor favor, llene todos los campos");
+        }
     }//GEN-LAST:event_btnRegistrarClienteActionPerformed
 
     public void limpiarCasillas(){
@@ -197,6 +206,10 @@ public class FrameRegistrarCliente extends javax.swing.JInternalFrame {
         txtCICliente.setText(null);
         txtDireccionCliente.setText(null);
         txtTelefonoCliente.setText(null);
+    }
+    
+    public void limpiarAreaDeTexto(){
+        txaMostrarClienteRegistro.setText(null);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
