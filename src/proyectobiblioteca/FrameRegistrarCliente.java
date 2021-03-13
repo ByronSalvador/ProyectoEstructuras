@@ -179,18 +179,36 @@ public class FrameRegistrarCliente extends javax.swing.JInternalFrame {
                 && !txtCICliente.getText().isEmpty()
                 && !txtDireccionCliente.getText().isEmpty()
                 && !txtTelefonoCliente.getText().isEmpty()){
-            Cliente cliente1 = new Cliente();
-            cliente1.setNombres(txtNombreCliente.getText());
-            cliente1.setApellidos(txtApellidoCliente.getText());
-            cliente1.setDireccion(txtDireccionCliente.getText());
-            cliente1.setCedula(txtCICliente.getText());
-            cliente1.setTelefono(txtTelefonoCliente.getText());
-
-            NodoCliente nuevoNodoCliente = new NodoCliente(cliente1);
-            principal.clientes.ingresarNodo(nuevoNodoCliente);
-            txaMostrarClienteRegistro.setText("¡Cliente ingresado!" + cliente1.toString());
+            StringBuilder auxCI = new StringBuilder(txtCICliente.getText());
+            boolean aux = true;
+            for (int i = 0; i<auxCI.length();i++){
+                aux &= Character.isDigit(auxCI.charAt(i));
+            }
             
-            limpiarCasillas();
+            if (aux){
+                if (Cliente.esCedulaValida(txtCICliente.getText())){
+                    Cliente cliente1 = new Cliente();
+                    cliente1.setNombres(txtNombreCliente.getText());
+                    cliente1.setApellidos(txtApellidoCliente.getText());
+                    cliente1.setDireccion(txtDireccionCliente.getText());
+                    cliente1.setCedula(txtCICliente.getText());
+                    cliente1.setTelefono(txtTelefonoCliente.getText());
+
+                    NodoCliente nuevoNodoCliente = new NodoCliente(cliente1);
+                    principal.clientes.ingresarNodo(nuevoNodoCliente);
+                    txaMostrarClienteRegistro.setText("¡Cliente ingresado!" + cliente1.toString());
+
+                    limpiarCasillas();  
+                }
+                else {
+                    txaMostrarClienteRegistro.setText("Error. Se ha ingresado un valor de cédula"
+                            + " inválido.\nPor favor, ingrese una cédula válida.");
+                }
+            }
+            else {
+                txaMostrarClienteRegistro.setText("Error. En el campo \"Cédula\" debe ingresarse"
+                        + " una cédula de 10 dígitos.\nPor favor, ingrese una cédula válida.");
+            }  
         }
         else {
             txaMostrarClienteRegistro.setText("No se ha ingresado información suficiente"

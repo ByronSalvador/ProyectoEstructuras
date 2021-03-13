@@ -163,17 +163,36 @@ public class FrameRegistrarLibro extends javax.swing.JInternalFrame {
                 && !txtAutorLibro.getText().isEmpty()
                 && !txtEdicionLibro.getText().isEmpty()
                 && !txtNumPaginasLibro.getText().isEmpty()){
-            Libro libro1 = new Libro();
-            libro1.setTitulo(txtTituloLibro.getText());
-            libro1.setISBN(txtISBNLibro.getText());
-            libro1.setAutor(txtAutorLibro.getText());
-            libro1.setEdicion(txtEdicionLibro.getText());
-            libro1.setNumPaginas(Integer.parseInt(txtNumPaginasLibro.getText()));
-
-            principal.libros.ingresarLibro(libro1);
-            txaMostrarRegistroLibro.setText("¡Se ha ingresado el libro!" + libro1.toString());
             
-            limpiarCasillas();
+            if (txtISBNLibro.getText().length() != 13){
+                txaMostrarRegistroLibro.setText("Error. En el campo ISBN debe ingresarse"
+                    + " un ISBN de 13 dígitos.\nPor favor, ingrese un ISBN válido.");
+            }
+            else {
+                StringBuilder auxIsbn = new StringBuilder(txtISBNLibro.getText());
+                boolean aux = true;
+                for (int i = 0; i<auxIsbn.length();i++){
+                    aux &= Character.isDigit(auxIsbn.charAt(i));
+                }
+                
+                if (aux){
+                    Libro libro1 = new Libro();
+                    libro1.setTitulo(txtTituloLibro.getText());
+                    libro1.setISBN(txtISBNLibro.getText());
+                    libro1.setAutor(txtAutorLibro.getText());
+                    libro1.setEdicion(txtEdicionLibro.getText());
+                    libro1.setNumPaginas(Integer.parseInt(txtNumPaginasLibro.getText()));
+
+                    principal.libros.ingresarLibro(libro1);
+                    txaMostrarRegistroLibro.setText("¡Se ha ingresado el libro!" + libro1.toString());
+
+                    limpiarCasillas();
+                }
+                else{
+                    txaMostrarRegistroLibro.setText("Error. Se ha ingresado un ISBN incorrecto."
+                    + "\nPor favor, ingrese un ISBN compuesto solamente por dígitos.");
+                }
+            }
         }
         else {
             txaMostrarRegistroLibro.setText("No se ha ingresado información suficiente"

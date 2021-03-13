@@ -37,9 +37,9 @@ public class FrameBuscarLibro extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txaMostrarLibro = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        txtTituloLibro = new javax.swing.JTextField();
+        txtIsbnLibro = new javax.swing.JTextField();
 
-        Titulo.setText("Título");
+        Titulo.setText("ISBN");
 
         btnBuscarLibro.setText("Buscar");
         btnBuscarLibro.setToolTipText("");
@@ -67,7 +67,7 @@ public class FrameBuscarLibro extends javax.swing.JInternalFrame {
                             .addGap(52, 52, 52)
                             .addComponent(Titulo)
                             .addGap(50, 50, 50)
-                            .addComponent(txtTituloLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtIsbnLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGap(174, 174, 174)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -86,7 +86,7 @@ public class FrameBuscarLibro extends javax.swing.JInternalFrame {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Titulo)
-                    .addComponent(txtTituloLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIsbnLibro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnBuscarLibro)
                 .addGap(18, 18, 18)
@@ -98,24 +98,22 @@ public class FrameBuscarLibro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLibroActionPerformed
-        if (!txtTituloLibro.getText().isEmpty()){
-            String titulo = txtTituloLibro.getText();
-            Libro libro1 = principal.libros.buscarLibro(titulo);
+        if (!txtIsbnLibro.getText().isEmpty()){
+            String isbn = txtIsbnLibro.getText();
+            Libro libro1 = principal.libros.buscarLibro(isbn);
             if (libro1 == null){
                 txaMostrarLibro.setText("No se ha encontrado el libro");
             }
             else {
                 txaMostrarLibro.setText(libro1.toString());
             }
-
-            txtTituloLibro.setText(null);
+            txtIsbnLibro.setText(null);
         }
         else {
             txaMostrarLibro.setText("No se ha ingresado información para"
                     + " realizar la búsqueda.\nPor favor, ingrese un valor en "
-                    + " el campo \"Título\"");
+                    + " el campo \"ISBN\"");
         }
-        
     }//GEN-LAST:event_btnBuscarLibroActionPerformed
 
     public void limpiarAreaDeTexto(){
@@ -128,6 +126,6 @@ public class FrameBuscarLibro extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txaMostrarLibro;
-    private javax.swing.JTextField txtTituloLibro;
+    private javax.swing.JTextField txtIsbnLibro;
     // End of variables declaration//GEN-END:variables
 }

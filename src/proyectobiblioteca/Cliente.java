@@ -55,6 +55,67 @@ public class Cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+    
+    public static boolean esCedulaValida(String cedula) {
+        StringBuilder c = new StringBuilder(cedula);
+        boolean digitoAux = true;
+        int digito;
+        if (c.length() == 10 || c.length() == 11) {
+            if (c.charAt(9) == '-') {
+                c = c.deleteCharAt(9);
+            } else if (c.length() == 11) {
+                return false;
+            }
+            for (int i = 0; i < 10; i++) {
+                digitoAux &= Character.isDigit(c.charAt(i));
+            }
+            if (digitoAux) {
+                int verificador = Character.getNumericValue(c.charAt(9));
+                int sumaImpares = 0;
+                int sumaPares = 0;
+                int sumaTotal;
+                int decena;
+                for (int i = 0; i < 9; i++) {
+                    if (i % 2 == 0) {
+                        digito = Character.getNumericValue(c.charAt(i));
+                        digito = digito * 2;
+                        if (digito > 9) {
+                            digito -= 9;
+                        }
+                        c.replace(i, i + 1, Integer.toString(digito));
+                    }
+                }
+                for (int i = 0; i < 9; i++) {
+                    if (i % 2 == 0) {
+                        sumaImpares += Character.getNumericValue(c.charAt(i));
+                    }
+                }
+                for (int i = 0; i < 9; i++) {
+                    if (i % 2 != 0) {
+                        sumaPares += Character.getNumericValue(c.charAt(i));
+                    }
+                }
+                sumaTotal = sumaImpares + sumaPares;
+                decena = (sumaTotal / 10) + 1;
+                decena *= 10;
+                decena -= sumaTotal;
+                if (decena == 10) {
+                    decena -= 10;
+                }
+                if (decena == verificador) {
+                    String numProv;
+                    numProv = cedula.substring(0, 2);
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 
     @Override
     public String toString() {

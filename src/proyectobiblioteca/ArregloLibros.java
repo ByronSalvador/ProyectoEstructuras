@@ -35,15 +35,14 @@ public class ArregloLibros {
         
     }
     
-    public Libro buscarLibro(String titulo){
+    public Libro buscarLibro(String isbn){
         Libro q;
         for (int i=0; i<numLibros; i++){
             q = libros[i];
             if (q != null){
-                if ((!titulo.equals(null)) && q.titulo.equals(titulo))
+                if ((!isbn.equals(null)) && q.ISBN.equals(isbn))
                     return q;
             }
-            
         }
         return null;
     }

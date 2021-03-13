@@ -26,7 +26,7 @@
                           <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                           <Component id="Titulo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="txtTituloLibro" min="-2" pref="220" max="-2" attributes="0"/>
+                          <Component id="txtIsbnLibro" min="-2" pref="220" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
@@ -53,7 +53,7 @@
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Titulo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtTituloLibro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtIsbnLibro" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnBuscarLibro" min="-2" max="-2" attributes="0"/>
@@ -67,7 +67,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="Titulo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="T&#xed;tulo"/>
+        <Property name="text" type="java.lang.String" value="ISBN"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnBuscarLibro">
@@ -102,7 +102,7 @@
         <Property name="text" type="java.lang.String" value="CONSULTAR LIBRO"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtTituloLibro">
+    <Component class="javax.swing.JTextField" name="txtIsbnLibro">
     </Component>
   </SubComponents>
 </Form>

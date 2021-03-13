@@ -44,9 +44,9 @@ public class FrameRegistrarReservacion extends javax.swing.JInternalFrame {
         btnAgregar = new javax.swing.JButton();
         txaMostrar = new javax.swing.JScrollPane();
         txaMostrarRegistroReservacion = new javax.swing.JTextArea();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        cmbDia = new javax.swing.JComboBox<String>();
+        cmbAnio = new javax.swing.JComboBox<String>();
+        cmbMes = new javax.swing.JComboBox<String>();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -83,11 +83,11 @@ public class FrameRegistrarReservacion extends javax.swing.JInternalFrame {
         txaMostrarRegistroReservacion.setRows(5);
         txaMostrar.setViewportView(txaMostrarRegistroReservacion);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
+        cmbDia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2020", "2021", "2022" }));
+        cmbAnio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "2020", "2021", "2022" }));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        cmbMes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,11 +115,11 @@ public class FrameRegistrarReservacion extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btnAgregar)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cmbDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(cmbAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(193, 193, 193)
                         .addComponent(jLabel6))
@@ -151,9 +151,9 @@ public class FrameRegistrarReservacion extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnAgregar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -168,22 +168,36 @@ public class FrameRegistrarReservacion extends javax.swing.JInternalFrame {
         if (!txtCodigoReservacion.getText().isEmpty()
                 && !txtISBNReservacion.getText().isEmpty()
                 && !txtCIReservacion.getText().isEmpty()
-                && !txtFechaReservacionDia.getText().isEmpty()
-                && !txtFechaReservacionMes.getText().isEmpty()
-                && !txtFechareservacionAnio.getText().isEmpty()){
-            Reservacion reservacion1 = new Reservacion();
-            reservacion1.setCodigo(Integer.parseInt(txtCodigoReservacion.getText()));
-            reservacion1.setIsbnLibro(txtISBNReservacion.getText());
-            reservacion1.setCedulaCliente(txtCIReservacion.getText());
-            reservacion1.setFecha(new Fecha(Integer.parseInt(txtFechaReservacionDia.getText()), 
-                                            Integer.parseInt(txtFechaReservacionMes.getText()), 
-                                            Integer.parseInt(txtFechareservacionAnio.getText())));
+                && !cmbDia.getSelectedItem().toString().equals("-")
+                && !cmbMes.getSelectedItem().toString().equals("-")
+                && !cmbAnio.getSelectedItem().toString().equals("-")){
+            
+            if (principal.libros.buscarLibro(txtISBNReservacion.getText()) == null){
+                txaMostrarRegistroReservacion.setText("El ISBN ingresado no corresponde"
+                        + " a ningún libro ingresado en la biblioteca.\nPor favor, "
+                        + "ingrese un ISBN válido.");
+            }
+            else {
+                if (principal.clientes.buscarNodo(txtCIReservacion.getText()) == null){
+                    txaMostrarRegistroReservacion.setText("La cédula ingresada no corresponde"
+                            + " a ningún cliente registrado en la biblioteca.\nPor favor, "
+                            + "ingrese una cédula válida.");
+                }
+                else {
+                    Reservacion reservacion1 = new Reservacion();
+                    reservacion1.setCodigo(Integer.parseInt(txtCodigoReservacion.getText()));
+                    reservacion1.setIsbnLibro(txtISBNReservacion.getText());
+                    reservacion1.setCedulaCliente(txtCIReservacion.getText());
+                    reservacion1.setFecha(new Fecha(Integer.parseInt(cmbDia.getSelectedItem().toString()), 
+                                                    Integer.parseInt(cmbMes.getSelectedItem().toString()), 
+                                                    Integer.parseInt(cmbAnio.getSelectedItem().toString())));
+                    NodoReservacion nuevoNodoReservacion = new NodoReservacion(reservacion1);
+                    principal.reservaciones.ingresarNodo(nuevoNodoReservacion);
+                    txaMostrarRegistroReservacion.setText("¡Reservación registrada!" + reservacion1.toString());
 
-            NodoReservacion nuevoNodoReservacion = new NodoReservacion(reservacion1);
-            principal.reservaciones.ingresarNodo(nuevoNodoReservacion);
-            txaMostrarRegistroReservacion.setText("¡Reservación registrada!" + reservacion1.toString());
-
-            limpiarCasillas();
+                    limpiarCasillas();
+                }
+            }
         }
         else {
             txaMostrarRegistroReservacion.setText("No se ha ingresado información suficiente"
@@ -194,9 +208,9 @@ public class FrameRegistrarReservacion extends javax.swing.JInternalFrame {
     public void limpiarCasillas(){
         txtCIReservacion.setText(null);
         txtCodigoReservacion.setText(null);
-        txtFechaReservacionDia.setText(null);
-        txtFechaReservacionMes.setText(null);
-        txtFechareservacionAnio.setText(null);
+        cmbDia.setSelectedIndex(0);
+        cmbMes.setSelectedIndex(0);
+        cmbAnio.setSelectedIndex(0);
         txtISBNReservacion.setText(null);
     }
 
@@ -206,9 +220,9 @@ public class FrameRegistrarReservacion extends javax.swing.JInternalFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> cmbAnio;
+    private javax.swing.JComboBox<String> cmbDia;
+    private javax.swing.JComboBox<String> cmbMes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
