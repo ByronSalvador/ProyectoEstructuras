@@ -144,7 +144,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btnAgregarReservacion.setText("Agregar");
+        btnAgregarReservacion.setText("Registrar");
         btnAgregarReservacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarReservacionActionPerformed(evt);
