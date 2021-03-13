@@ -194,7 +194,7 @@ public class FrameRegistrarReservacion extends javax.swing.JInternalFrame {
                                                     Integer.parseInt(cmbAnio.getSelectedItem().toString())));
                     NodoReservacion nuevoNodoReservacion = new NodoReservacion(reservacion1);
                     principal.reservaciones.ingresarNodo(nuevoNodoReservacion);
-                    txaMostrarRegistroReservacion.setText("¡Reservación registrada!" + reservacion1.toString());
+                    txaMostrarRegistroReservacion.setText("¡Reservación registrada!\n" + reservacion1.toString());
 
                     limpiarCasillas();
                 }

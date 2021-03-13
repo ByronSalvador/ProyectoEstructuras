@@ -46,6 +46,13 @@ public class ArregloLibros {
         }
         return null;
     }
+    
+    public boolean estaRegistrado(String isbn){
+        if (this.buscarLibro(isbn) == null)
+            return false;
+        else
+            return true;
+    }
 
     @Override
     public String toString() {

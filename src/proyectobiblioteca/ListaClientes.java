@@ -46,6 +46,13 @@ public class ListaClientes {
             return q.cliente;
         }
     }
+    
+    public boolean estaRegistrado(String cedula){
+        if (this.buscarNodo(cedula) == null)
+            return false;
+        else
+            return true;
+    }
 
     @Override
     public String toString() {

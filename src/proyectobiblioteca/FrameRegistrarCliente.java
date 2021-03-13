@@ -187,18 +187,24 @@ public class FrameRegistrarCliente extends javax.swing.JInternalFrame {
             
             if (aux){
                 if (Cliente.esCedulaValida(txtCICliente.getText())){
-                    Cliente cliente1 = new Cliente();
-                    cliente1.setNombres(txtNombreCliente.getText());
-                    cliente1.setApellidos(txtApellidoCliente.getText());
-                    cliente1.setDireccion(txtDireccionCliente.getText());
-                    cliente1.setCedula(txtCICliente.getText());
-                    cliente1.setTelefono(txtTelefonoCliente.getText());
+                    if (principal.clientes.estaRegistrado(txtCICliente.getText())){
+                        txaMostrarClienteRegistro.setText("Ya existe un cliente con la cédula indicada."
+                                + "\nPor favor ingrese otra cédula.");
+                    }
+                    else {
+                        Cliente cliente1 = new Cliente();
+                        cliente1.setNombres(txtNombreCliente.getText());
+                        cliente1.setApellidos(txtApellidoCliente.getText());
+                        cliente1.setDireccion(txtDireccionCliente.getText());
+                        cliente1.setCedula(txtCICliente.getText());
+                        cliente1.setTelefono(txtTelefonoCliente.getText());
 
-                    NodoCliente nuevoNodoCliente = new NodoCliente(cliente1);
-                    principal.clientes.ingresarNodo(nuevoNodoCliente);
-                    txaMostrarClienteRegistro.setText("¡Cliente ingresado!" + cliente1.toString());
+                        NodoCliente nuevoNodoCliente = new NodoCliente(cliente1);
+                        principal.clientes.ingresarNodo(nuevoNodoCliente);
+                        txaMostrarClienteRegistro.setText("¡Cliente ingresado!\n" + cliente1.toString());
 
-                    limpiarCasillas();  
+                        limpiarCasillas(); 
+                    }  
                 }
                 else {
                     txaMostrarClienteRegistro.setText("Error. Se ha ingresado un valor de cédula"

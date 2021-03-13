@@ -176,17 +176,23 @@ public class FrameRegistrarLibro extends javax.swing.JInternalFrame {
                 }
                 
                 if (aux){
-                    Libro libro1 = new Libro();
-                    libro1.setTitulo(txtTituloLibro.getText());
-                    libro1.setISBN(txtISBNLibro.getText());
-                    libro1.setAutor(txtAutorLibro.getText());
-                    libro1.setEdicion(txtEdicionLibro.getText());
-                    libro1.setNumPaginas(Integer.parseInt(txtNumPaginasLibro.getText()));
+                    if (principal.libros.estaRegistrado(txtISBNLibro.getText())){
+                        txaMostrarRegistroLibro.setText("Ya existe un libro con el isbn indicado."
+                                + "\nPor favor, ingrese otro isbn.");
+                    }
+                    else {
+                        Libro libro1 = new Libro();
+                        libro1.setTitulo(txtTituloLibro.getText());
+                        libro1.setISBN(txtISBNLibro.getText());
+                        libro1.setAutor(txtAutorLibro.getText());
+                        libro1.setEdicion(txtEdicionLibro.getText());
+                        libro1.setNumPaginas(Integer.parseInt(txtNumPaginasLibro.getText()));
 
-                    principal.libros.ingresarLibro(libro1);
-                    txaMostrarRegistroLibro.setText("¡Se ha ingresado el libro!" + libro1.toString());
+                        principal.libros.ingresarLibro(libro1);
+                        txaMostrarRegistroLibro.setText("¡Se ha ingresado el libro!\n" + libro1.toString());
 
-                    limpiarCasillas();
+                        limpiarCasillas();
+                    }
                 }
                 else{
                     txaMostrarRegistroLibro.setText("Error. Se ha ingresado un ISBN incorrecto."

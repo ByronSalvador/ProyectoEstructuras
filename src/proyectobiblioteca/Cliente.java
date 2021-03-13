@@ -103,8 +103,6 @@ public class Cliente {
                     decena -= 10;
                 }
                 if (decena == verificador) {
-                    String numProv;
-                    numProv = cedula.substring(0, 2);
                     return true;
                 } else {
                     return false;
@@ -119,6 +117,6 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cedula: " + cedula + "\nNombres: " + nombres + "\nApellidos: " + apellidos + "\nTelefono: " + telefono + "\nDireccion: " + direccion;
+        return "Cédula: " + cedula + "\nNombres: " + nombres + "\nApellidos: " + apellidos + "\nTeléfono: " + telefono + "\nDirección: " + direccion;
     }
 }

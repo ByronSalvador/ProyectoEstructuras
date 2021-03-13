@@ -58,6 +58,6 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "\nTitulo: " + titulo + "\nISBN: " + ISBN + "\nAutor: " + autor + "\nEdicion: " + edicion + "\nNumPaginas: " + numPaginas;
+        return "Título: " + titulo + "\nISBN: " + ISBN + "\nAutor: " + autor + "\nEdición: " + edicion + "\nNo. de Páginas: " + numPaginas;
     }
 }
