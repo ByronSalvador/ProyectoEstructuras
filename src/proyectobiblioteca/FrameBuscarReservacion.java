@@ -105,9 +105,8 @@ public class FrameBuscarReservacion extends javax.swing.JInternalFrame {
             if (reservacion1 == null){
                 txaMostrarReservacionBuscada.setText("No se ha encontrado la reservación");
             } else {
-                txaMostrarReservacionBuscada.setText(reservacion1.toString());
+                txaMostrarReservacionBuscada.setText("¡Cliente encontrado!\n" + reservacion1.toString());
             }
-
             txtCodigoReservacionBuscar.setText(null);
         }
         else {

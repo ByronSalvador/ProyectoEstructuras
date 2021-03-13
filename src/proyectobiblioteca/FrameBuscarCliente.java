@@ -103,10 +103,9 @@ public class FrameBuscarCliente extends javax.swing.JInternalFrame {
                 txaMostrarCliente.setText("No se ha encontrado al cliente");
             }
             else {
-                txaMostrarCliente.setText(cliente1.toString());
+                txaMostrarCliente.setText("¡Cliente encontrado!\n" +  cliente1.toString());
             }
-            
-            txtCedula.setText(null); 
+            txtCedula.setText(null);
         }
         else {
             txaMostrarCliente.setText("No se ha ingresado información para"

@@ -105,7 +105,7 @@ public class FrameBuscarLibro extends javax.swing.JInternalFrame {
                 txaMostrarLibro.setText("No se ha encontrado el libro");
             }
             else {
-                txaMostrarLibro.setText(libro1.toString());
+                txaMostrarLibro.setText("¡Libro encontrado!\n" + libro1.toString());
             }
             txtIsbnLibro.setText(null);
         }

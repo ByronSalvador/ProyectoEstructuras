@@ -49,8 +49,6 @@ public class Reservacion {
 
     @Override
     public String toString() {
-        return "\nCodigo: " + codigo + "| Libro (ISBN): " + isbnLibro + "| Cliente (CI): " + cedulaCliente + "| Fecha: " + fecha;
+        return "\nCodigo: " + codigo + "\nLibro (ISBN): " + isbnLibro + "\nCliente (CI): " + cedulaCliente + "\nFecha: " + fecha;
     }
- 
-    
 }
