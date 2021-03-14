@@ -192,18 +192,20 @@ public class FrameRegistrarReservacion extends javax.swing.JInternalFrame {
                         txaMostrarRegistroReservacion.setText("Ya existe una reservación con el código indicado."
                                 + "\nPor favor, ingrese otro código.");
                     }
-                    Reservacion reservacion1 = new Reservacion();
-                    reservacion1.setCodigo(Integer.parseInt(txtCodigoReservacion.getText()));
-                    reservacion1.setIsbnLibro(txtISBNReservacion.getText());
-                    reservacion1.setCedulaCliente(txtCIReservacion.getText());
-                    reservacion1.setFecha(new Fecha(Integer.parseInt(cmbDia.getSelectedItem().toString()), 
-                                                    Integer.parseInt(cmbMes.getSelectedItem().toString()), 
-                                                    Integer.parseInt(cmbAnio.getSelectedItem().toString())));
-                    NodoReservacion nuevoNodoReservacion = new NodoReservacion(reservacion1);
-                    principal.reservaciones.ingresarNodo(nuevoNodoReservacion);
-                    txaMostrarRegistroReservacion.setText("¡Reservación registrada!\n" + reservacion1.toString());
+                    else {
+                        Reservacion reservacion1 = new Reservacion();
+                        reservacion1.setCodigo(Integer.parseInt(txtCodigoReservacion.getText()));
+                        reservacion1.setIsbnLibro(txtISBNReservacion.getText());
+                        reservacion1.setCedulaCliente(txtCIReservacion.getText());
+                        reservacion1.setFecha(new Fecha(Integer.parseInt(cmbDia.getSelectedItem().toString()), 
+                                                        Integer.parseInt(cmbMes.getSelectedItem().toString()), 
+                                                        Integer.parseInt(cmbAnio.getSelectedItem().toString())));
+                        NodoReservacion nuevoNodoReservacion = new NodoReservacion(reservacion1);
+                        principal.reservaciones.ingresarNodo(nuevoNodoReservacion);
+                        txaMostrarRegistroReservacion.setText("¡Reservación registrada!\n" + reservacion1.toString());
 
-                    limpiarCasillas();
+                        limpiarCasillas();
+                    }
                 }
             }
         }
