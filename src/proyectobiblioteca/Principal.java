@@ -88,8 +88,8 @@ public class Principal extends javax.swing.JFrame {
         ventanaPrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         btnClientes = new javax.swing.JMenu();
-        btnConsultarClientes = new javax.swing.JMenuItem();
         btnRegistrarCliente = new javax.swing.JMenuItem();
+        btnConsultarClientes = new javax.swing.JMenuItem();
         Productos = new javax.swing.JMenu();
         btnAgregarReservacion = new javax.swing.JMenuItem();
         btnBuscarReservacion = new javax.swing.JMenuItem();
@@ -118,14 +118,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btnConsultarClientes.setText("Buscar");
-        btnConsultarClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarClientesActionPerformed(evt);
-            }
-        });
-        btnClientes.add(btnConsultarClientes);
-
         btnRegistrarCliente.setText("Registrar");
         btnRegistrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +125,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         btnClientes.add(btnRegistrarCliente);
+
+        btnConsultarClientes.setText("Buscar");
+        btnConsultarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarClientesActionPerformed(evt);
+            }
+        });
+        btnClientes.add(btnConsultarClientes);
 
         jMenuBar1.add(btnClientes);
 
