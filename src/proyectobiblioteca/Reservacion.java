@@ -47,6 +47,7 @@ public class Reservacion {
         this.fecha = fecha;
     }
 
+    //Método toString para mostrar la información de una reservación
     @Override
     public String toString() {
         return "Código: " + codigo + "\nLibro (ISBN): " + isbnLibro + "\nCliente (CI): " + cedulaCliente + "\nFecha: " + fecha;

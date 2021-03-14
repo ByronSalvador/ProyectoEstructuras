@@ -98,6 +98,8 @@ public class FrameBuscarLibro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLibroActionPerformed
+        //Se valida que el ISBN corresponda a un libro de la biblioteca
+        //y que el campo de búsqueda no esté vacío        
         if (!txtIsbnLibro.getText().isEmpty()){
             String isbn = txtIsbnLibro.getText();
             Libro libro1 = principal.libros.buscarLibro(isbn);
@@ -116,6 +118,7 @@ public class FrameBuscarLibro extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnBuscarLibroActionPerformed
 
+    //Método para limpiar el área de texto
     public void limpiarAreaDeTexto(){
         txaMostrarLibro.setText(null);
     }

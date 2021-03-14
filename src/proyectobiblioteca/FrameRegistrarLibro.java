@@ -158,6 +158,7 @@ public class FrameRegistrarLibro extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        //Se valida que los campos no estén vacíos y que el ISBN tenga la longitud correcta
         if (!txtTituloLibro.getText().isEmpty()
                 && !txtISBNLibro.getText().isEmpty()
                 && !txtAutorLibro.getText().isEmpty()
@@ -206,6 +207,7 @@ public class FrameRegistrarLibro extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    //Método para limpiar todos los campos
     public void limpiarCasillas(){
         txtAutorLibro.setText(null);
         txtEdicionLibro.setText(null);
@@ -214,6 +216,7 @@ public class FrameRegistrarLibro extends javax.swing.JInternalFrame {
         txtTituloLibro.setText(null);
     }
     
+    //Método para limpiar el área de texto
     public void limpiarAreaDeTexto(){
         txaMostrarRegistroLibro.setText(null);
     }

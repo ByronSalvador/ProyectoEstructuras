@@ -10,8 +10,8 @@ package proyectobiblioteca;
  * @author salva
  */
 public class NodoReservacion {
-        Reservacion reservacion;
-        NodoReservacion enlace;
+    Reservacion reservacion;    //Campo "info" del nodo
+    NodoReservacion enlace;     //Campo "liga" del nodo
     
     public NodoReservacion(Reservacion reservacion){
         this.reservacion = reservacion;

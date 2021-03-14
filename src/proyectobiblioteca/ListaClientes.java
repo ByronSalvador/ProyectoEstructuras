@@ -10,16 +10,20 @@ package proyectobiblioteca;
  * @author salva
  */
 public class ListaClientes {
+    //Puntero que apunta al primer elemento de la lista (cabeza)
     NodoCliente cabeza;
     
+    //Constructor vacío (lista vacía)
     public ListaClientes(){
         cabeza = null;
     }
     
+    //Constructor que toma como parámetro de entrada un nodo (Lista con un nodo)
     public ListaClientes(NodoCliente nuevoNodo){
         cabeza = nuevoNodo;
     }
     
+    //Método para ingresar un nodo (cliente) a la lista
     public void ingresarNodo(NodoCliente nuevoNodo){
         if(cabeza == null){
             cabeza = nuevoNodo;
@@ -33,6 +37,7 @@ public class ListaClientes {
         }      
     }
     
+    //Método para busscar un nodo (cliente) por su cédula
     public Cliente buscarNodo(String cedula){
         NodoCliente q = cabeza;
         while((q != null) && (!q.cliente.cedula.equals(cedula))){
@@ -47,6 +52,9 @@ public class ListaClientes {
         }
     }
     
+    
+    //Método para identificar su un cliente se encuentra en la lista
+    //El parámetro de entrada es una cédula
     public boolean estaRegistrado(String cedula){
         if (this.buscarNodo(cedula) == null)
             return false;
@@ -54,6 +62,7 @@ public class ListaClientes {
             return true;
     }
 
+    //Método toString que muestra ka información de todos los clientes
     @Override
     public String toString() {
         String infoClientes="";
@@ -61,9 +70,8 @@ public class ListaClientes {
         while(q!=null){
             infoClientes += q.cliente.toString();
             q=q.enlace;
+            infoClientes += "\n\n";
         }
         return "CLIENTES: " + "\n" + infoClientes;
     }
-    
-    
 }

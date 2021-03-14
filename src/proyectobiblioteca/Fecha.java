@@ -14,6 +14,8 @@ public class Fecha {
     int mes;
     int anio;
     
+    //Constructor para un objeto de tipo "Fecha" con parámetros de entrada
+    //del día, mes y fecha
     public Fecha(int dia, int mes, int anio){
         this.dia=dia;
         this.mes=mes;
@@ -44,11 +46,9 @@ public class Fecha {
         this.anio = anio;
     }
 
+    //Método toString para imprimir la fecha
     @Override
     public String toString() {
         return dia + "/" + mes + "/" + anio;
     }
-    
-    
-    
 }

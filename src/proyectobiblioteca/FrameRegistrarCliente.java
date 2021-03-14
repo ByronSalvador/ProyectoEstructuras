@@ -174,6 +174,7 @@ public class FrameRegistrarCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarClienteActionPerformed
+        //Se valida que los campos no estén vacíos y que la cédula sea válida
         if (!txtNombreCliente.getText().isEmpty()
                 && !txtApellidoCliente.getText().isEmpty()
                 && !txtCICliente.getText().isEmpty()
@@ -222,6 +223,7 @@ public class FrameRegistrarCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnRegistrarClienteActionPerformed
 
+    //Método para limpiar todos los campos
     public void limpiarCasillas(){
         txtApellidoCliente.setText(null);
         txtNombreCliente.setText(null);
@@ -230,6 +232,7 @@ public class FrameRegistrarCliente extends javax.swing.JInternalFrame {
         txtTelefonoCliente.setText(null);
     }
     
+    //Método para limpiar el área de texto
     public void limpiarAreaDeTexto(){
         txaMostrarClienteRegistro.setText(null);
     }

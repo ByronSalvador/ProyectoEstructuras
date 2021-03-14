@@ -15,31 +15,15 @@ import javax.swing.JOptionPane;
  * @author danie
  */
 public class Principal extends javax.swing.JFrame {
-/*
-    FrameRegistrarCliente rc = new FrameRegistrarCliente();
-    FrameRegistrarProducto rp = new FrameRegistrarProducto();
-    FrameRegistrarMateriaPrima rmp = new FrameRegistrarMateriaPrima();
-    FrameConsultarCliente consultar = new FrameConsultarCliente();
-    FrameRegistrarVenta regVenta = new FrameRegistrarVenta();
-    ConsultarVenta consultarVenta = new ConsultarVenta();
-    FrameGenerarFacturar generarFactura = new FrameGenerarFacturar();
-    FrameConsultarProducto consultarProducto = new FrameConsultarProducto();
-    FrameConsultarMatPrima consultarMatPrima = new FrameConsultarMatPrima();
-    FrameConsultarFactura consultarFactura = new FrameConsultarFactura();
-    FrameAnularFactura anularFactura = new FrameAnularFactura();
-    FrameActualizarCliente actualizarCliente  = new FrameActualizarCliente();
-    FrameActualizarMatPrima actualizarMatPrima = new FrameActualizarMatPrima();
-    FrameActualizarProducto actualizarProducto = new FrameActualizarProducto();
-    FrameCrearUsuario crearUsuario = new FrameCrearUsuario();
-    FrameActualizarContrasena actualizarContrasena = new FrameActualizarContrasena();   
-*/
-    final int MAX_LIBROS=5;
+    //Se debe indicar la cantidad máxima de libros de la biblioteca
+    final int MAX_LIBROS=50;
+    
+    //Se declaran las instancias de las estructuras
     ArregloLibros libros = new ArregloLibros(MAX_LIBROS);
     ListaClientes clientes = new ListaClientes();
     ColaReservaciones reservaciones = new ColaReservaciones();
     
-    
-    
+    //Se inicializan las interfaces
     FrameBuscarCliente buscarCliente = new FrameBuscarCliente(this);
     FrameRegistrarCliente registrarCliente = new FrameRegistrarCliente(this);
     FrameRegistrarReservacion registrarReservacion = new FrameRegistrarReservacion(this);
@@ -50,24 +34,6 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
-        /*
-        ventanaPrincipal.add(rc);
-        ventanaPrincipal.add(rp);
-        ventanaPrincipal.add(rmp);
-        ventanaPrincipal.add(consultar);
-        ventanaPrincipal.add(regVenta);
-        ventanaPrincipal.add(consultarVenta);
-        ventanaPrincipal.add(generarFactura);
-        ventanaPrincipal.add(consultarFactura);
-        ventanaPrincipal.add(consultarMatPrima);
-        ventanaPrincipal.add(consultarProducto);
-        ventanaPrincipal.add(anularFactura);
-        ventanaPrincipal.add(actualizarCliente);
-        ventanaPrincipal.add(actualizarMatPrima);
-        ventanaPrincipal.add(actualizarProducto);
-        ventanaPrincipal.add(crearUsuario);
-        ventanaPrincipal.add(actualizarContrasena);
-        */
         ventanaPrincipal.add(buscarCliente);
         ventanaPrincipal.add(registrarCliente);
         ventanaPrincipal.add(registrarReservacion);
@@ -90,12 +56,12 @@ public class Principal extends javax.swing.JFrame {
         btnClientes = new javax.swing.JMenu();
         btnRegistrarCliente = new javax.swing.JMenuItem();
         btnConsultarClientes = new javax.swing.JMenuItem();
-        Productos = new javax.swing.JMenu();
-        btnAgregarReservacion = new javax.swing.JMenuItem();
-        btnBuscarReservacion = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        btnLibros = new javax.swing.JMenu();
         btnRegistrarLibro = new javax.swing.JMenuItem();
         btnConsultarLibro = new javax.swing.JMenuItem();
+        btnReservaciones = new javax.swing.JMenu();
+        btnAgregarReservacion = new javax.swing.JMenuItem();
+        btnBuscarReservacion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,11 +78,6 @@ public class Principal extends javax.swing.JFrame {
 
         btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user.png"))); // NOI18N
         btnClientes.setText("Clientes");
-        btnClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClientesActionPerformed(evt);
-            }
-        });
 
         btnRegistrarCliente.setText("Registrar");
         btnRegistrarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -136,34 +97,8 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(btnClientes);
 
-        Productos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bill.png"))); // NOI18N
-        Productos.setText("Reservaciones");
-        Productos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProductosActionPerformed(evt);
-            }
-        });
-
-        btnAgregarReservacion.setText("Registrar");
-        btnAgregarReservacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarReservacionActionPerformed(evt);
-            }
-        });
-        Productos.add(btnAgregarReservacion);
-
-        btnBuscarReservacion.setText("Buscar");
-        btnBuscarReservacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarReservacionActionPerformed(evt);
-            }
-        });
-        Productos.add(btnBuscarReservacion);
-
-        jMenuBar1.add(Productos);
-
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menu (1).png"))); // NOI18N
-        jMenu2.setText("Libros");
+        btnLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menu (1).png"))); // NOI18N
+        btnLibros.setText("Libros");
 
         btnRegistrarLibro.setText("Registrar");
         btnRegistrarLibro.addActionListener(new java.awt.event.ActionListener() {
@@ -171,7 +106,7 @@ public class Principal extends javax.swing.JFrame {
                 btnRegistrarLibroActionPerformed(evt);
             }
         });
-        jMenu2.add(btnRegistrarLibro);
+        btnLibros.add(btnRegistrarLibro);
 
         btnConsultarLibro.setText("Buscar");
         btnConsultarLibro.addActionListener(new java.awt.event.ActionListener() {
@@ -179,9 +114,30 @@ public class Principal extends javax.swing.JFrame {
                 btnConsultarLibroActionPerformed(evt);
             }
         });
-        jMenu2.add(btnConsultarLibro);
+        btnLibros.add(btnConsultarLibro);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(btnLibros);
+
+        btnReservaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bill.png"))); // NOI18N
+        btnReservaciones.setText("Reservaciones");
+
+        btnAgregarReservacion.setText("Registrar");
+        btnAgregarReservacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarReservacionActionPerformed(evt);
+            }
+        });
+        btnReservaciones.add(btnAgregarReservacion);
+
+        btnBuscarReservacion.setText("Buscar");
+        btnBuscarReservacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarReservacionActionPerformed(evt);
+            }
+        });
+        btnReservaciones.add(btnBuscarReservacion);
+
+        jMenuBar1.add(btnReservaciones);
 
         setJMenuBar(jMenuBar1);
 
@@ -205,10 +161,6 @@ public class Principal extends javax.swing.JFrame {
         registrarCliente.limpiarAreaDeTexto();
     }//GEN-LAST:event_btnRegistrarClienteActionPerformed
 
-    private void ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ProductosActionPerformed
-
     private void btnAgregarReservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarReservacionActionPerformed
         CentrarVentana(registrarReservacion);
         registrarReservacion.limpiarCasillas();
@@ -220,10 +172,6 @@ public class Principal extends javax.swing.JFrame {
         registrarLibro.limpiarCasillas();
         registrarLibro.limpiarAreaDeTexto();
     }//GEN-LAST:event_btnRegistrarLibroActionPerformed
-
-    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
-        //CentrarVentana(rc);
-    }//GEN-LAST:event_btnClientesActionPerformed
 
     private void btnConsultarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarClientesActionPerformed
          CentrarVentana(buscarCliente);
@@ -249,32 +197,15 @@ public class Principal extends javax.swing.JFrame {
         Dimension Dframe = frame.getSize();
         frame.setLocation((dimension.width - Dframe.width) / 2, (dimension.height - Dframe.height) / 2);
         frame.show();
-        
-
     }
 
-   void cerrarVentanas() {////
-        
-       
+   void cerrarVentanas() {
         buscarCliente.setVisible(false);
         registrarCliente.setVisible(false);
         registrarReservacion.setVisible(false);
         eliminarReservacion.setVisible(false);
         registrarLibro.setVisible(false);
         buscarLibro.setVisible(false);
-       /*
-        generarFactura.setVisible(false);
-        consultarFactura.setVisible(false);
-        consultarMatPrima.setVisible(false);
-        consultarProducto.setVisible(false);
-        anularFactura.setVisible(false);
-        actualizarCliente.setVisible(false);
-        actualizarMatPrima.setVisible(false);
-        actualizarProducto.setVisible(false);
-        crearUsuario.setVisible(false);
-        actualizarContrasena.setVisible(false);
-        */
-       
     }
 
     public static void main(String args[]) {
@@ -313,15 +244,15 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu Productos;
     private javax.swing.JMenuItem btnAgregarReservacion;
     private javax.swing.JMenuItem btnBuscarReservacion;
     private javax.swing.JMenu btnClientes;
     private javax.swing.JMenuItem btnConsultarClientes;
     private javax.swing.JMenuItem btnConsultarLibro;
+    private javax.swing.JMenu btnLibros;
     private javax.swing.JMenuItem btnRegistrarCliente;
     private javax.swing.JMenuItem btnRegistrarLibro;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu btnReservaciones;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JDesktopPane ventanaPrincipal;
     // End of variables declaration//GEN-END:variables

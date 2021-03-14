@@ -9,9 +9,10 @@ package proyectobiblioteca;
  *
  * @author salva
  */
+//Nodo para representar u cliente
 public class NodoCliente {
-        Cliente cliente;
-        NodoCliente enlace;
+    Cliente cliente;    //Campo "info" del nodo
+    NodoCliente enlace; //Campo "liga" del nodo
     
     public NodoCliente(Cliente cliente){
         this.cliente = cliente;
@@ -33,6 +34,4 @@ public class NodoCliente {
     public void setEnlace(NodoCliente enlace) {
         this.enlace = enlace;
     }
- 
 }
-

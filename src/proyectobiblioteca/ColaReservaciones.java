@@ -10,18 +10,23 @@ package proyectobiblioteca;
  * @author salva
  */
 public class ColaReservaciones {
+    //Punteros (referencias) frente y fin de la cola
     NodoReservacion frente;
     NodoReservacion fin;
     
+    //Costructor vacío de una cola de reservaciones
     public ColaReservaciones(){
         frente=fin=null;
     }
     
+    //Constructor de una cola de reservaciones
+    //El parámetro de entrada es un nodo de reservación
     public ColaReservaciones(NodoReservacion nuevoNodo){
         frente=nuevoNodo;
         fin = nuevoNodo;
     }
     
+    //Método para ingresar un nodo (reservación) a la cola
     public void ingresarNodo(NodoReservacion nuevoNodo){
         if(fin == null){
             fin = nuevoNodo;
@@ -32,48 +37,7 @@ public class ColaReservaciones {
         }
     }
     
-    public Reservacion eliminarNodo(){
-        if (fin == null){
-            return null;
-        }
-        else {
-            NodoReservacion q = frente;
-            if (frente == fin){
-                frente = null;
-                fin = null;
-            }
-            else {
-                frente = frente.enlace;
-            }
-            return q.reservacion;
-        }
-    }
-    
-    public Reservacion eliminarNodo(int codigo){
-        NodoReservacion q = frente;
-        NodoReservacion t = frente;
-        int b = 1;
-        
-        while((q.reservacion.codigo == codigo) && (b == 1)){
-            if (q.enlace != null){
-                t = q;
-                q = q.enlace;
-            }
-            else {
-                b = 0;
-            }
-        }
-        
-        if(b == 0){
-            return null;
-        }
-        else {
-            if (frente == fin)
-            return null; //kajsdkl
-        }
-        return null; //arasras
-    }
-    
+    //Método para buscar un nodo (reservación) en la cola
     public Reservacion buscarNodo(int codigo){
         NodoReservacion q = frente;
         while((q != null) && (q.reservacion.codigo != codigo)){
@@ -88,15 +52,16 @@ public class ColaReservaciones {
         }
     }
     
-@Override
+    //Método toString que imprime todas las reservaciones de la cola
+    @Override
     public String toString() {
         String infoReservacion="";
         NodoReservacion q=frente;
         while(q!=null){
             infoReservacion += q.reservacion.toString();
             q=q.enlace;
+            infoReservacion += "\n\n";
         }
         return "RESERVACIONES: " + "\n" + infoReservacion;
     }
-    
 }

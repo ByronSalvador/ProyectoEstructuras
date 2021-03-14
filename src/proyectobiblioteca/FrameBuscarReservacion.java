@@ -99,23 +99,26 @@ public class FrameBuscarReservacion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarReservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarReservacionActionPerformed
+        //Se valida que el código corresponda a una reservación de la biblioteca
+        //y que el campo de búsqueda no esté vacío        
         if (!txtCodigoReservacionBuscar.getText().isEmpty()){
             int codigoRes = Integer.parseInt(txtCodigoReservacionBuscar.getText());
             Reservacion reservacion1 = principal.reservaciones.buscarNodo(codigoRes);
             if (reservacion1 == null){
                 txaMostrarReservacionBuscada.setText("No se ha encontrado la reservación");
             } else {
-                txaMostrarReservacionBuscada.setText("¡Cliente encontrado!\n" + reservacion1.toString());
+                txaMostrarReservacionBuscada.setText("¡Reservación encontrada!\n" + reservacion1.toString());
             }
             txtCodigoReservacionBuscar.setText(null);
         }
         else {
             txaMostrarReservacionBuscada.setText("No se ha ingresado información para"
                     + " realizar la búsqueda.\nPor favor, ingrese un valor en "
-                    + " el campo \"Código\"");
+                    + "el campo \"Código\"");
         }
     }//GEN-LAST:event_btnBuscarReservacionActionPerformed
 
+    //Método para limpiar el área de texto
     public void limpiarAreaDeTexto(){
         txaMostrarReservacionBuscada.setText(null);
     }

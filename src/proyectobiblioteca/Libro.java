@@ -56,6 +56,7 @@ public class Libro {
         this.numPaginas = numPaginas;
     }
 
+    //Método toString para imprimir la información de un libro
     @Override
     public String toString() {
         return "Título: " + titulo + "\nISBN: " + ISBN + "\nAutor: " + autor + "\nEdición: " + edicion + "\nNo. de Páginas: " + numPaginas;

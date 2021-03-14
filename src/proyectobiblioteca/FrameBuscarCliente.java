@@ -96,7 +96,9 @@ public class FrameBuscarCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
-    if (!txtCedula.getText().isEmpty()){
+        //Se valida que la cédula corresponda a un cliente de la biblioteca
+        //y que el campo de búsqueda no esté vacío
+        if (!txtCedula.getText().isEmpty()){
             String cedulaCliente = txtCedula.getText();
             Cliente cliente1 = principal.clientes.buscarNodo(cedulaCliente);
             if (cliente1 == null){
@@ -114,6 +116,7 @@ public class FrameBuscarCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
+    //Método para limpiar el área de texto
     public void limpiarAreaDeTexto(){
         txaMostrarCliente.setText(null);
     }

@@ -11,10 +11,10 @@ package proyectobiblioteca;
  */
 public class Cliente {
     String cedula;
-    String nombres, apellidos;
+    String nombres;
+    String apellidos;
     String telefono;
     String direccion;
-    //boolean esEmpleado; //Si no es empleado sera falso
 
     public String getCedula() {
         return cedula;
@@ -56,6 +56,7 @@ public class Cliente {
         this.direccion = direccion;
     }
     
+    //Método para validar una cédula
     public static boolean esCedulaValida(String cedula) {
         StringBuilder c = new StringBuilder(cedula);
         boolean digitoAux = true;
@@ -115,6 +116,7 @@ public class Cliente {
         }
     }
 
+    //Método toString para imprimir la información de un cliente
     @Override
     public String toString() {
         return "Cédula: " + cedula + "\nNombres: " + nombres + "\nApellidos: " + apellidos + "\nTeléfono: " + telefono + "\nDirección: " + direccion;
