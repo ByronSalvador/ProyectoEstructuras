@@ -193,19 +193,26 @@ public class FrameRegistrarCliente extends javax.swing.JInternalFrame {
                                 + "\nPor favor ingrese otra cédula.");
                     }
                     else {
-                        Cliente cliente1 = new Cliente();
-                        cliente1.setNombres(txtNombreCliente.getText());
-                        cliente1.setApellidos(txtApellidoCliente.getText());
-                        cliente1.setDireccion(txtDireccionCliente.getText());
-                        cliente1.setCedula(txtCICliente.getText());
-                        cliente1.setTelefono(txtTelefonoCliente.getText());
+                        if (Cliente.esNombreApellidoValido(txtNombreCliente.getText())
+                                && Cliente.esNombreApellidoValido(txtApellidoCliente.getText())){
+                            Cliente cliente1 = new Cliente();
+                            cliente1.setNombres(txtNombreCliente.getText());
+                            cliente1.setApellidos(txtApellidoCliente.getText());
+                            cliente1.setDireccion(txtDireccionCliente.getText());
+                            cliente1.setCedula(txtCICliente.getText());
+                            cliente1.setTelefono(txtTelefonoCliente.getText());
 
-                        NodoCliente nuevoNodoCliente = new NodoCliente(cliente1);
-                        principal.clientes.ingresarNodo(nuevoNodoCliente);
-                        txaMostrarClienteRegistro.setText("¡Cliente ingresado!\n" + cliente1.toString());
+                            NodoCliente nuevoNodoCliente = new NodoCliente(cliente1);
+                            principal.clientes.ingresarNodo(nuevoNodoCliente);
+                            txaMostrarClienteRegistro.setText("¡Cliente ingresado!\n" + cliente1.toString());
 
-                        limpiarCasillas(); 
-                    }  
+                            limpiarCasillas(); 
+                        }
+                        else {
+                            txaMostrarClienteRegistro.setText("Error al ingresar el nombre o apellido."
+                                    + "\nPor favor ingrese nombres y apellido válidos.");
+                        }
+                    } 
                 }
                 else {
                     txaMostrarClienteRegistro.setText("Error. Se ha ingresado un valor de cédula"

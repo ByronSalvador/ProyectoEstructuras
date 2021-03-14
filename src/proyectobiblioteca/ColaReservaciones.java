@@ -52,6 +52,15 @@ public class ColaReservaciones {
         }
     }
     
+    //Método que nos indica si una reservación se encuentra en la cola
+    //Su parámetro de entrada es el código de una reservación
+    public boolean estaRegistrada(int codigo){
+        if (this.buscarNodo(codigo) == null)
+            return false;
+        else
+            return true;        
+    }
+    
     //Método toString que imprime todas las reservaciones de la cola
     @Override
     public String toString() {

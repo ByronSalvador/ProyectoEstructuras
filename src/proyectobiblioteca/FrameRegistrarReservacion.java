@@ -188,6 +188,10 @@ public class FrameRegistrarReservacion extends javax.swing.JInternalFrame {
                             + "ingrese una cédula válida.");
                 }
                 else {
+                    if (principal.reservaciones.estaRegistrada(Integer.parseInt(txtCodigoReservacion.getText()))){
+                        txaMostrarRegistroReservacion.setText("Ya existe una reservación con el código indicado."
+                                + "\nPor favor, ingrese otro código.");
+                    }
                     Reservacion reservacion1 = new Reservacion();
                     reservacion1.setCodigo(Integer.parseInt(txtCodigoReservacion.getText()));
                     reservacion1.setIsbnLibro(txtISBNReservacion.getText());

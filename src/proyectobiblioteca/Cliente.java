@@ -115,6 +115,14 @@ public class Cliente {
             return false;
         }
     }
+    
+    //Método para validar un nombre
+    public static boolean esNombreApellidoValido(String cadena){
+        if (cadena.matches("[a-zA-Z]* [a-zA-Z]*"))
+            return true;
+        else
+            return false;
+    }
 
     //Método toString para imprimir la información de un cliente
     @Override
